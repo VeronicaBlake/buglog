@@ -58,14 +58,15 @@ import $ from 'jquery'
 import Pop from '../utils/Notifier'
 import { notesService } from '../services/NotesService'
 import { reactive, computed } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRoute } from 'vue-router'
 import { AppState } from '../AppState'
 import { logger } from '../utils/Logger'
 
 export default {
   name: 'CreateNoteModal',
   setup() {
-    const router = useRouter()
+    // const router = useRouter()
+    const route = useRoute()
     const state = reactive({
       newNote: {},
       thisNote: computed(() => AppState.activeNote)
@@ -75,6 +76,7 @@ export default {
       state,
       async createNote() {
         try {
+          state.newNote.bugId = route.params.id
           const id = await notesService.createNote(state.newNote)
           logger.log(id)
           $('#new-note-form').modal('toggle')

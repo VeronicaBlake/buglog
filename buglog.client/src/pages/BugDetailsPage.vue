@@ -84,7 +84,7 @@
           </thead>
           <tbody>
             <!-- Inject Note Component here. -->
-            <!-- <NoteComponent v-for="note in state.notes" :key="note.id" :note="note" /> -->
+            <NoteComponent v-for="note in state.notes" :key="note.id" :note="note" />
           </tbody>
         </table>
       </div>
@@ -97,7 +97,7 @@ import { computed, reactive, onMounted } from 'vue'
 import { AppState } from '../AppState'
 import Pop from '../utils/Notifier'
 import { bugsService } from '../services/BugsService'
-import { notesService } from '../services/NotesService'
+// import { notesService } from '../services/NotesService'
 import { useRoute } from 'vue-router'
 export default {
   name: 'BugDetailsPage',
