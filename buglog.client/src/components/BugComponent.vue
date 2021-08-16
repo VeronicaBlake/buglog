@@ -1,22 +1,28 @@
 <template>
   <div class="bugs-component">
     <div class="row my-2 ">
-      <router-link :to="{name: 'BugDetailsPage'}">
-        <div class="col-12 border">
-          <h1>
-            {{ bug.title }}
-          </h1>
-          <span>
-            <img class="rounded-circle creator-pic" :src="bug.creator.picture" alt="Bug Creator Profile Picture">
-            {{ bug.creator.name }}
+      <div class="col-12 border">
+        <h1>
+          {{ bug.title }}
+        </h1>
+        <span>
+          <img class="rounded-circle creator-pic my-1" :src="bug.creator.picture" alt="Bug Creator Profile Picture">
+          {{ bug.creator.name }}
+        </span>
+        <span class="mx-5">Last edited: {{ new Date (bug.updatedAt).toLocaleString(time) }}</span>
+        <span class="mx-5"> Status:
+          <span v-if="bug.closed" class="text-danger">
+            <i class="fas fa-bug fa-1x text-danger"></i> Closed</span>
+          <span v-else class="text-success">
+            <i class="fas fa-bug fa-1x  text-success"></i> Open
           </span>
-          <span class="mx-5">Last edited: {{ new Date (bug.updatedAt).toLocaleString(time) }}</span>
-          <span class="mx-5"> Status:
-            <span v-if="bug.closed" class="text-danger"> Closed </span>
-            <span v-else class="text-success"> Open </span>
-          </span>
-        </div>
-      </router-link>
+        </span>
+        <router-link :to="{ name: 'BugDetailsPage', params:{id:bug.id} }" title="View Bug Details">
+          <button class="btn btn-primary btn-sm text-dark">
+            View Details
+          </button>
+        </router-link>
+      </div>
     </div>
   </div>
 </template>
@@ -71,7 +77,7 @@ export default {
 
 <style scoped>
 .creator-pic{
-  max-height: 3rem;
-  max-width: 3rem;
+  max-height: 2rem;
+  max-width: 2rem;
 }
 </style>

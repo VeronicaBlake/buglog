@@ -22,14 +22,14 @@ class BugsService {
   //     }
   //   }
 
-  //   async getActiveBug(bugId) {
-  //     try {
-  //       const res = await api.get(`api/bugs/${bugId}`)
-  //       AppState.activeBug = res.data
-  //     } catch (error) {
-  //       Pop.toast(error, 'ERROR LOADING BUG')
-  //     }
-  //   }
+  async getActiveBug(bugId) {
+    try {
+      const res = await api.get(`api/bugs/${bugId}`)
+      AppState.activeBug = res.data
+    } catch (error) {
+      Pop.toast(error, 'ERROR LOADING BUG')
+    }
+  }
 
   //   async getNotesByBugId(bugId) {
   //     try {
