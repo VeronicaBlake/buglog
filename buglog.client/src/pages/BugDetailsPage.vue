@@ -15,7 +15,7 @@
       </div>
     </div>
 
-    <div class="row mx-1 my-1 justify-content-between">
+    <div class="row mx-1 my-1 justify-content-between" v-if="state.activeBug.creator">
       <div class="col-md-4 d-flex flex-row">
         <p class="font-weight-lighter">
           Reported by: <img :src="state.activeBug.creator.picture" height="30" alt="" class="user-photo rounded-circle mx-2"><b> {{ state.activeBug.creator.name }}</b>
@@ -112,7 +112,7 @@ export default {
     onMounted(async() => {
       try {
         await bugsService.getActiveBug(route.params.id)
-        await notesService.getNotesByBugId(route.params.id)
+        // await notesService.getNotesByBugId(route.params.id)
       } catch (error) {
         Pop.toast('error:' + error, 'warning')
       }

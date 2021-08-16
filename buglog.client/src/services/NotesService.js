@@ -46,7 +46,7 @@ class NotesService {
   //         router.push({ name: 'BugsDetailsPage', params: { id: res.data.id } })
   //       this.getAllBugs()
   //     } catch (error) {
-  //       Pop.toast(error, 'ERROR CREATING BUG')
+  //       Pop.toast(error, 'error')
   //     }
   //   }
 

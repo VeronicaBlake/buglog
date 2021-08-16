@@ -5,6 +5,20 @@
         <i class="fas fa-bug fa-5x fa-spin text-success"></i>
       </div>
     </div>
+    <div class="row my-3">
+      <span class="col-my-6">
+        <button type="button"
+                class="btn btn-lg btn-danger mx-3"
+                data-toggle="modal"
+                data-target="#new-bug-form"
+                title="Report Bug"
+                v-if="state.user.isAuthenticated"
+        >
+          REPORT NEW BUG
+        </button>
+        <CreateBugModal />
+      </span>
+    </div>
     <div v-if="state.bugs">
       <BugComponent v-for="b in state.bugs" :key="b.id" :bug="b" />
     </div>

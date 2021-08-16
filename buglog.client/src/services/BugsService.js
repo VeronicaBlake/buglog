@@ -14,14 +14,6 @@ class BugsService {
     }
   }
 
-  //   async hideClosed() {
-  //     if (document.getElementById('filter-box').checked) {
-  //       AppState.bugs = AppState.bugs.filter(bug => bug.closed !== true)
-  //     } else {
-  //       this.getAllBugs()
-  //     }
-  //   }
-
   async getActiveBug(bugId) {
     try {
       const res = await api.get(`api/bugs/${bugId}`)
@@ -31,22 +23,27 @@ class BugsService {
     }
   }
 
+  async createBug(bug) {
+    const res = await api.post('api/bugs', bug)
+    AppState.activeBug = res.data
+    await this.getAllBugs()
+    return res.data.id
+  }
+
+  //   async hideClosed() {
+  //     if (document.getElementById('filter-box').checked) {
+  //       AppState.bugs = AppState.bugs.filter(bug => bug.closed !== true)
+  //     } else {
+  //       this.getAllBugs()
+  //     }
+  //   }
+
   //   async getNotesByBugId(bugId) {
   //     try {
   //       const res = await api.get(`api/bugs/${bugId}/notes`)
   //       AppState.notes = res.data
   //     } catch (error) {
   //       Pop.toast(error, 'Error getting notes')
-  //     }
-  //   }
-
-  //   async createBug(body) {
-  //     try {
-  //       const res = await api.post('api/bugs', body)
-  //         router.push({ name: 'BugsDetailsPage', params: { id: res.data.id } })
-  //       this.getAllBugs()
-  //     } catch (error) {
-  //       Pop.toast(error, 'ERROR CREATING BUG')
   //     }
   //   }
 
