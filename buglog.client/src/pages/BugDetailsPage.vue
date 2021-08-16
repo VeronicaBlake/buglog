@@ -62,7 +62,7 @@
         >
           Add Note
         </button>
-        <!-- <CreateNoteModal /> -->
+        <CreateNoteModal />
       </span>
     </div>
 
