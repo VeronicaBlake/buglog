@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
+    <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }" title="Navigate to Home Page">
       <div class="">
         <h1>
           BugL<svg xmlns="http://www.w3.org/2000/svg"

@@ -9,10 +9,10 @@
           <img class="rounded-circle creator-pic my-1" :src="bug.creator.picture" alt="Bug Creator Profile Picture">
           {{ bug.creator.name }}
         </span>
-        <span class="mx-5">Last edited: {{ new Date (bug.updatedAt).toLocaleString(time) }}</span>
-        <span class="mx-5"> Status:
-          <span v-if="bug.closed" class="text-danger">
-            <i class="fas fa-bug fa-1x text-danger"></i> Closed</span>
+        <span class="mx-5 bg-dark">Last edited: {{ new Date (bug.updatedAt).toLocaleString(time) }}</span>
+        <span class="mx-5 bg-dark"> Status:
+          <span v-if="bug.closed" class="text-light">
+            <i class="fas fa-bug fa-1x text-light"></i> Closed</span>
           <span v-else class="text-success">
             <i class="fas fa-bug fa-1x  text-success"></i> Open
           </span>

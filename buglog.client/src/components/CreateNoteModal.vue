@@ -60,7 +60,7 @@ import { notesService } from '../services/NotesService'
 import { reactive, computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { AppState } from '../AppState'
-import { logger } from '../utils/Logger'
+import { bugsService } from '../services/BugsService'
 
 export default {
   name: 'CreateNoteModal',
@@ -77,10 +77,10 @@ export default {
       async createNote() {
         try {
           state.newNote.bugId = route.params.id
-          const id = await notesService.createNote(state.newNote)
-          logger.log(id)
           $('#new-note-form').modal('toggle')
+          await notesService.createNote(state.newNote)
           state.newNote = {}
+          bugsService.getNotesByBugId(route.params.id)
           Pop.toast('Created Note Successfully', 'success')
         } catch (error) {
           Pop.toast(error, 'error')
