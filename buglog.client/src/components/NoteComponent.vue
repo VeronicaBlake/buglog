@@ -36,12 +36,13 @@ export default {
       route,
       async deleteNote() {
         try {
-          if (await Pop.confirmAction()) {
-            await notesService.deleteNote(props.note.id, props.note.bug)
-            Pop.toast('Note Deleted')
+          if (await Pop.confirm()) {
+            await notesService.deleteNote(props.note._id, props.note.bugId)
+            this.$forceUpdate()
+            Pop.toast('Deleted Note Successfully', 'success')
           }
         } catch (error) {
-          Pop.toast('Error:', error + 'error')
+          Pop.toast(error, 'error')
         }
       }
     }

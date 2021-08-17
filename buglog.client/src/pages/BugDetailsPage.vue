@@ -122,9 +122,8 @@ export default {
       route,
       async closeBug() {
         try {
-          if (await Pop.confirmAction()) {
+          if (await Pop.confirm()) {
             await bugsService.closeBug(state.activeBug, state.activeBug.id)
-            Pop.toast('Bug Closed')
           }
         } catch (error) {
           Pop.toast('Error:', error + 'error')

@@ -18,6 +18,17 @@
         </button>
         <CreateBugModal />
       </span>
+      <div class="col-md-6 d-flex justify-content-end align-items-end">
+        <span>Hide Closed Bugs
+          <input type="checkbox"
+                 class="filter-checkbox cursor-pointer"
+                 id="filter-box"
+                 name="filter-box"
+                 title="Hide Closed Bugs"
+                 @click="hideClosed"
+          >
+        </span>
+      </div>
     </div>
     <div v-if="state.bugs">
       <BugComponent v-for="b in state.bugs" :key="b.id" :bug="b" />
@@ -51,20 +62,13 @@ export default {
     })
     return {
       state,
-      //   async hideClosed(bugs) {
-      //     try {
-      //       await bugsService.hideClosed(bugs)
-      //     } catch (error) {
-      //       Pop.toast(error, ' error')
-      //     }
-      //   },
-      //   async sortByStatus(bugs) {
-      //     try {
-      //       await bugsService.sortByStatus(bugs)
-      //     } catch (error) {
-      //       Pop.toast(error, 'error')
-      //     }
-      //   },
+      async hideClosed(bugs) {
+        try {
+          await bugsService.hideClosed(bugs)
+        } catch (error) {
+          Pop.toast(error, ' error')
+        }
+      },
       user: computed(() => AppState.user)
     }
   }

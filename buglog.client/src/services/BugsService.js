@@ -30,13 +30,13 @@ class BugsService {
     return res.data.id
   }
 
-  //   async hideClosed() {
-  //     if (document.getElementById('filter-box').checked) {
-  //       AppState.bugs = AppState.bugs.filter(bug => bug.closed !== true)
-  //     } else {
-  //       this.getAllBugs()
-  //     }
-  //   }
+  async hideClosed() {
+    if (document.getElementById('filter-box').checked) {
+      AppState.bugs = AppState.bugs.filter(bug => bug.closed !== true)
+    } else {
+      this.getAllBugs()
+    }
+  }
 
   async getNotesByBugId(bugId) {
     try {
@@ -47,27 +47,28 @@ class BugsService {
     }
   }
 
-  //   async editBug(bugId, edit) {
-  //     try {
-  //       await api.put(`api/bugs/${bugId}`, edit)
-  //       await this.getAllBugs()
-  //     } catch (error) {
-  //       Pop.toast(error, 'ERROR EDITING BUG')
-  //     }
-  //   }
+  async editBug(bugId, edit) {
+    try {
+      await api.put(`api/bugs/${bugId}`, edit)
+      await this.getAllBugs()
+    } catch (error) {
+      Pop.toast(error, 'ERROR EDITING BUG')
+    }
+  }
 
-//   async closeBug(activeBug, bugId) {
-//     try {
-//       await api.close(`api/bugs/${bugId}`)
-//       if (activeBug.closed === false) {
-//         AppState.activeBug.closed = true
-//       } else {
-//         Pop.toast('BUG CLOSED')
-//       }
-//     } catch (error) {
-//       Pop.toast(error, 'ERROR CLOSING BUG')
-//     }
-//   }
+  async closeBug(activeBug, bugId) {
+    try {
+      await api.delete(`api/bugs/${bugId}`)
+      if (activeBug.closed === false) {
+        AppState.activeBug.closed = true
+        Pop.toast('BUG CLOSED', 'success')
+      } else {
+        Pop.toast('BUG NOT CLOSED', 'error')
+      }
+    } catch (error) {
+      Pop.toast(error, 'error')
+    }
+  }
 }
 
 export const bugsService = new BugsService()
