@@ -1,11 +1,11 @@
 import mongoose from 'mongoose'
 const Schema = mongoose.Schema
-// const ObjectId = Schema.Types.ObjectId
+const ObjectId = Schema.Types.ObjectId
 
 export const Note = new Schema(
   {
     body: { type: String, required: true },
-    creatorId: { type: String, ref: 'Account', required: true },
+    creatorId: { type: ObjectId, ref: 'Account', required: true },
     bugId: { type: String, ref: 'Bug', required: true }
   }, { timestamps: true, toJSON: { virtuals: true } }
 )

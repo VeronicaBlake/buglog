@@ -112,7 +112,7 @@ export default {
     onMounted(async() => {
       try {
         await bugsService.getActiveBug(route.params.id)
-        // await notesService.getNotesByBugId(route.params.id)
+        await bugsService.getNotesByBugId(route.params.id)
       } catch (error) {
         Pop.toast('error:' + error, 'warning')
       }

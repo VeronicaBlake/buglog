@@ -38,14 +38,14 @@ class BugsService {
   //     }
   //   }
 
-  //   async getNotesByBugId(bugId) {
-  //     try {
-  //       const res = await api.get(`api/bugs/${bugId}/notes`)
-  //       AppState.notes = res.data
-  //     } catch (error) {
-  //       Pop.toast(error, 'Error getting notes')
-  //     }
-  //   }
+  async getNotesByBugId(bugId) {
+    try {
+      const res = await api.get(`api/bugs/${bugId}/notes`)
+      AppState.notes = res.data
+    } catch (error) {
+      Pop.toast(error, 'Error getting notes')
+    }
+  }
 
   //   async editBug(bugId, edit) {
   //     try {
